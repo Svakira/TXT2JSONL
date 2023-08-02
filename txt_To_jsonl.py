@@ -11,7 +11,10 @@ def process_text_file(input_file, output_file):
         while "   " in text:
             text = text.replace("   ", " ")
 
-    data_obj = {"Text": text}
+    # Get the name of the file 
+    file_name = os.path.splitext(os.path.basename(input_file))[0]
+
+    data_obj = {"text": text}
 
     with open(output_file, "a") as fout:
         json.dump(data_obj, fout)
@@ -28,7 +31,7 @@ def process_files_in_directory(directory):
             process_files_in_directory(subdir_path)
 
 if __name__ == "__main__":
-    input_directory = "C:/Users/Sara Cardona/OneDrive/Escritorio/Bible Project - copia" 
+    input_directory = "C:/Users/Sara Cardona/OneDrive/Escritorio/Bible Project_v4" 
     # Replace with the path of the directory
-    # The script has to be in the folder in wich you want to search the txt files
+    # The script has to be in the folder in which you want to search the txt files
     process_files_in_directory(input_directory)
